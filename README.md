@@ -27,7 +27,7 @@ The API runs at `http://localhost:5000`.
 - `GET /schema` required request fields
 - `POST /predict` predict a price
 
-## Quick curl tests (Railway) (1, 2, 3, 5)
+## Quick curl tests Railway
 
 ```bash
 # 1) Health
