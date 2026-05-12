@@ -27,29 +27,31 @@ The API runs at `http://localhost:5000`.
 - `GET /schema` required request fields
 - `POST /predict` predict a price
 
-## Railway URL
-
-Base URL:
-
-```bash
-BASE_URL="https://housing-price-prediction-production-8801.up.railway.app"
-```
-
-## Quick curl tests (1, 2, 3, 5)
+## Quick curl tests (Railway) (1, 2, 3, 5)
 
 ```bash
 # 1) Health
-curl -s "$BASE_URL/health"
 
-# 2) Stats
-curl -s "$BASE_URL/stats"
 
-# 3) Schema
-curl -s "$BASE_URL/schema"
+# 5) Predict (À Vendre)
+curl -s -X POST https://housing-price-prediction-production-8801.up.railway.app/predict -H "Content-Type: application/json" \
+  -d '{"room_count":2,"bathroom_count":1,"size":95,"category":"Appartements","type":"À Vendre","city":"Ariana","region":"La Soukra"}'
 
-# 5) Predict (À Louer)
-curl -s -X POST "$BASE_URL/predict" -H "Content-Type: application/json" \
-  -d '{"room_count":2,"bathroom_count":1,"size":80,"category":"Appartements","type":"À Louer","city":"Tunis","region":"La Marsa"}'
+# Rent example 1 (À Louer) - Ariana / La Soukra
+curl -s -X POST https://housing-price-prediction-production-8801.up.railway.app/predict -H "Content-Type: application/json" \
+  -d '{"room_count":2,"bathroom_count":1,"size":80,"category":"Appartements","type":"À Louer","city":"Ariana","region":"La Soukra"}'
+
+# Rent example 2 (À Louer) - Sousse / Sahloul
+curl -s -X POST https://housing-price-prediction-production-8801.up.railway.app/predict -H "Content-Type: application/json" \
+  -d '{"room_count":2,"bathroom_count":1,"size":85,"category":"Appartements","type":"À Louer","city":"Sousse","region":"Sahloul"}'
+
+# Rent example 3 (À Louer) - Sousse / Hammam Sousse
+curl -s -X POST https://housing-price-prediction-production-8801.up.railway.app/predict -H "Content-Type: application/json" \
+  -d '{"room_count":3,"bathroom_count":2,"size":120,"category":"Maisons et Villas","type":"À Louer","city":"Sousse","region":"Hammam Sousse"}'
+
+# Rent example 4 (À Louer) - Tunis / La Marsa
+curl -s -X POST https://housing-price-prediction-production-8801.up.railway.app/predict -H "Content-Type: application/json" \
+  -d '{"room_count":2,"bathroom_count":1,"size":90,"category":"Appartements","type":"À Louer","city":"Tunis","region":"La Marsa"}'
 ```
 
 ### Example request
