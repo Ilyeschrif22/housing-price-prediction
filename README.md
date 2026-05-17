@@ -21,35 +21,24 @@ python app.py
 The API runs at `http://localhost:5000`.
 
 ## API
-
-- `GET /health` health check
-- `GET /stats` dataset stats and holdout metrics
-- `GET /schema` required request fields
 - `POST /predict` predict a price
 
 ## Quick curl tests Railway
 
 ```bash
-# 1) Health
 
-
-# 5) Predict (À Vendre)
 curl -s -X POST https://housing-price-prediction-production-8801.up.railway.app/predict -H "Content-Type: application/json" \
   -d '{"room_count":2,"bathroom_count":1,"size":95,"category":"Appartements","type":"À Vendre","city":"Ariana","region":"La Soukra"}'
 
-# Rent example 1 (À Louer) - Ariana / La Soukra
 curl -s -X POST https://housing-price-prediction-production-8801.up.railway.app/predict -H "Content-Type: application/json" \
   -d '{"room_count":2,"bathroom_count":1,"size":80,"category":"Appartements","type":"À Louer","city":"Ariana","region":"La Soukra"}'
 
-# Rent example 2 (À Louer) - Sousse / Sahloul
 curl -s -X POST https://housing-price-prediction-production-8801.up.railway.app/predict -H "Content-Type: application/json" \
   -d '{"room_count":2,"bathroom_count":1,"size":85,"category":"Appartements","type":"À Louer","city":"Sousse","region":"Sahloul"}'
 
-# Rent example 3 (À Louer) - Sousse / Hammam Sousse
 curl -s -X POST https://housing-price-prediction-production-8801.up.railway.app/predict -H "Content-Type: application/json" \
   -d '{"room_count":3,"bathroom_count":2,"size":120,"category":"Maisons et Villas","type":"À Louer","city":"Sousse","region":"Hammam Sousse"}'
 
-# Rent example 4 (À Louer) - Tunis / La Marsa
 curl -s -X POST https://housing-price-prediction-production-8801.up.railway.app/predict -H "Content-Type: application/json" \
   -d '{"room_count":2,"bathroom_count":1,"size":90,"category":"Appartements","type":"À Louer","city":"Tunis","region":"La Marsa"}'
 ```
